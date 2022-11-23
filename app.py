@@ -1,7 +1,7 @@
 from flask import Flask, request, jsonify #importar librerias
 from flask_mysqldb import MySQL #configuracion de la base de datos
 from requests import post #configuracion de la base de datos
-from sympy import hn1#configuracion de la base de datos
+
 
 app = Flask(__name__)
 

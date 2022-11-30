@@ -47,7 +47,7 @@ def get_vehiculo_venta(correo):#funcion de la pagina leer los vehiculos por el I
     except Exception as e:#el except es para que si hay un error no se caiga el programa
         return jsonify({'message': 'error'})#en caso de que haya un error se retorna un mensaje de error
 #funcion para insertar vehiculos a la base de datos    
-def insertar_vehiculo(nombre,modelo,caracteristica,precio):
+def insertar_vehiculo(nombre,modelo,caracteristica,precio ):
     try:
         cursor = mysql.connection.cursor()#se usa para conectar con la base de datos
         sql = """INSERT INTO heroku_978ea61906c2949.vehiculos(Nombre , Modelo , Tipo , Caracteristica, Precio) 

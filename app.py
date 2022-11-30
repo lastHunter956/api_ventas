@@ -2,9 +2,10 @@ from flask import Flask, request, jsonify #importar librerias
 from flask_mysqldb import MySQL #configuracion de la base de datos
 from requests import post #configuracion de la base de datos
 from sympy import hn1#configuracion de la base de datos
+from flask_cors import CORS, cross_origin
 
 app = Flask(__name__)
-
+CORS(app, resources={r"/*": {"origins": "*"}})
 app.config['MYSQL_HOST'] = 'us-cdbr-east-06.cleardb.net'#configuracion de la base de datos host
 app.config['MYSQL_USER'] = 'bbd292aa23aeaf'#configuracion de la base de datos usuario
 app.config['MYSQL_PASSWORD'] = 'ece55924'#configuracion de la base de datos contraseña

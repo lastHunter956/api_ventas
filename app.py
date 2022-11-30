@@ -52,7 +52,7 @@ def insertar_vehiculo(nombre,modelo,caracteristica,precio,Descripcion,imagen):
     try:
         cursor = mysql.connection.cursor()#se usa para conectar con la base de datos
         sql = """INSERT INTO heroku_978ea61906c2949.vehiculos(Nombre , Modelo , Tipo , Caracteristica, Precio,Descripcion,Imagen) 
-        VALUES ('{0}','{1}','usado','{2}',{3},{4},{5})""".format(nombre, modelo, caracteristica, precio,Descripcion,imagen)
+        VALUES ('{0}','{1}','usado','{2}',{3},'{4}','{5}')""".format(nombre, modelo, caracteristica, precio,Descripcion,imagen)
         cursor.execute(sql)#se ejecuta la consulta
         mysql.connection.commit()#guardar los cambios
         return True
@@ -75,6 +75,7 @@ def venta_vehiculos(correo):#funcion de la pagina registrar un vehiculo
     cedula = obtener_id(correo)
     cursor = mysql.connection.cursor()#se usa para conectar con la base de datos
     try:# el try es para que si hay un error no se caiga el programa
+        print("datos: ",request.json['Nombre'], request.json['Modelo'], request.json['Caracteristica'], request.json['Precio'],request.json['Descripcion'],request.json['Imagen'])
         if insertar_vehiculo(request.json['Nombre'], request.json['Modelo'], request.json['Caracteristica'], request.json['Precio'],request.json['Descripcion'],request.json['Imagen']) == True:#se inserta el vehiculo
             if extraer() != False:#se extrae el ultimo valor de la tabla vehiculos
                 id_vehiculo = extraer()#se guarda el ultimo valor de la tabla vehiculos
